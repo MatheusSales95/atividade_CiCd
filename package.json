@@ -1,0 +1,43 @@
+{
+  "name": "api-biblioteca",
+  "version": "1.0.0",
+  "description": "API REST de gestao de emprestimos de livros, com PostgreSQL",
+  "main": "dist/server.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "format:check": "prettier --check .",
+    "format": "prettier --write .",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json && node scripts/copiar-migracoes.mjs",
+    "test:unit": "vitest run test/unit",
+    "test:integration": "vitest run test/integration",
+    "db:migrate": "node dist/db/migrate.js",
+    "start": "node dist/server.js",
+    "security:audit": "npm audit --audit-level=high",
+    "security:sast": "eslint --config eslint.security.config.mjs src test scripts"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "pg": "^8.13.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "@types/pg": "^8.11.10",
+    "@types/supertest": "^6.0.2",
+    "@vitest/coverage-v8": "^5.1.0",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-security": "^4.2.1",
+    "prettier": "^3.4.2",
+    "supertest": "^7.0.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.1",
+    "vitest": "^5.1.0"
+  }
+}
